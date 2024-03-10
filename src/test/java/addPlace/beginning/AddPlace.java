@@ -67,6 +67,18 @@ public class AddPlace {
         This parameter determines how much indentation will be added before each JSON item.
         This makes it easier to read complex and long JSON data.
          */
+        /*
+        The .assertThat() in the line .then().assertThat().statusCode(200).body("scope", equalTo("APP"))
+        applies to both the subsequent .statusCode(200) and .body("scope", equalTo("APP")) assertions.
+        It's essentially specifying that both conditions should hold true.
+        You don't need to insert another .assertThat() before .body("scope", equalTo("APP")).
+        The current line already implies the assertion for both the status code check and the body content check.
+        Here's break down of that line:
+        .statusCode(200): This is asserting that the HTTP status code of the response should be 200.
+        .body("scope", equalTo("APP")): This is asserting that the scope field in the response body should equal to APP.
+        So, this line is making two assertions in the same chain, both covered under the same .assertThat(),
+        and both must pass for the overall assertion to pass.
+                 */
         JSONObject json = new JSONObject(response);
         System.out.println(json.toString(4)); // This will print the formatted response
         //System.out.println("all response as json = " + response);
