@@ -1,4 +1,4 @@
-package beginning;
+package addPlace.beginning;
 
 import io.restassured.RestAssured;
 import io.restassured.path.json.JsonPath;
