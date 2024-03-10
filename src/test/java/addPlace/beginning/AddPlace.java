@@ -10,6 +10,9 @@ import static org.hamcrest.Matchers.equalTo;
 public class AddPlace {
     public static void main(String[] args) {
         RestAssured.baseURI="https://rahulshettyacademy.com";
+        /*You can enclose long string expressions in a "text block" created using three double-quote marks (""")
+        This enhances readability and makes the code cleaner.
+         */
         String response = given().queryParam("key", "qaclick123")
                 .body("""
                         {
