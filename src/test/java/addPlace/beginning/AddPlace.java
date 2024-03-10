@@ -34,8 +34,27 @@ public class AddPlace {
                                                 
                         """)
                 .when().post("/maps/api/place/add/json")
-                .then().statusCode(200).body("scope", equalTo("APP"))
+                .then().assertThat().statusCode(200).body("scope", equalTo("APP"))
                 .extract().response().asString();
+        /*
+        Both .then().statusCode(200) and .then().assertThat().statusCode(200) are used
+        to validate the status code from a REST response in Rest Assured.
+        They are doing essentially the same job of checking that the returned status code equals to 200.
+        The difference is that .assertThat() provides better readability and is more flexible
+        since it comes from AssertJ and supports a wide variety of assertions, not just for status code.
+        Using .assertThat() can make your test cases more expressive and easier to understand,
+        especially when you chain multiple assertions together.
+        However, using .statusCode(200) is perfectly fine if you just want to check the status code.
+        It's not a mandatory to use .assertThat(), it's just a preference based on your testing needs
+        and how expressive and easily readable you want your test cases to be.
+
+        n the context of code, "readability" refers to how easily a programmer can understand what the code is doing just by looking at it.
+        Readable code tends to have clear logic and avoids overly complex structures and syntax.
+        When I say .assertThat() improves readability, I mean that it makes the code more expressive and easier to understand.
+        It clearly states that you are making an assertion about the state of the system.
+        For example, .then().assertThat().statusCode(200) can be read almost like English: "Then, assert that the status code is 200."
+        This improves the readability of your test cases, making them easier to understand and maintain.
+         */
 
         /*
         f you want to format your JSON response in a pretty way,
