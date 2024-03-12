@@ -41,17 +41,8 @@ public class AddPlaceTest {
         JSONObject json = new JSONObject(response);
         System.out.println(json.toString(4));
 
-
-
-
-
 //        String responseString = response.asString();
 //        System.out.println(responseString);
-//
-
-//
-        //System.out.println("all response as json = " + response);
-      //  System.out.println("Response: " + response);
 
 
 //        JsonPath js = new JsonPath(response);
