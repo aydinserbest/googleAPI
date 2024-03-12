@@ -19,11 +19,25 @@ public class SpecBuilderTest {
     public void addPlace(){
 
         Place place = getPlace();
-        RequestSpecification requestSpecification = new RequestSpecBuilder().setBaseUri("https://rahulshettyacademy.com").addQueryParam("key", "qaclick123")
+
+        /*
+        By using RequestSpecification and ResponseSpecification objects,
+        you effectively create reusable templates for your requests and responses.
+        This means that you define common properties for your HTTP requests and expected responses just once
+        and can then apply these to multiple tests. It streamlines your test code and ensures consistency across different test cases.
+        It's a particularly useful approach when you have many tests that share similar setup or validation requirements.
+         */
+
+        RequestSpecification requestSpecification = new RequestSpecBuilder()
+                .setBaseUri("https://rahulshettyacademy.com")
+                .addQueryParam("key", "qaclick123")
                 .setContentType(ContentType.JSON)
                 .build();
-        ResponseSpecification responseSpecBuilder = new ResponseSpecBuilder().expectStatusCode(200).expectContentType(ContentType.JSON).build();
 
+        ResponseSpecification responseSpecBuilder = new ResponseSpecBuilder()
+                .expectStatusCode(200)
+                .expectContentType(ContentType.JSON).build();
+    //These objects can then be reused across your tests. This approach reduces code duplication
 
         RequestSpecification request = given().spec(requestSpecification)
                 .body(place);
@@ -60,3 +74,24 @@ public class SpecBuilderTest {
         return place;
     }
 }
+/*
+    Second Approach (With Builder Pattern):
+    The second approach offers a more customizable and reusable structure for your tests.
+    By using the RequestSpecBuilder and ResponseSpecBuilder classes,
+    you can predefine common settings across tests (such as URL, Content Type, query parameters, etc.)
+    and save them as RequestSpecification and ResponseSpecification objects.
+    These objects can then be reused across your tests. This approach reduces code duplication
+    and simplifies the management of your tests.
+
+    The builder pattern in the second approach makes your code more modular and manageable.
+    Especially for large and complex test suites, centralizing common configurations in one place is
+    more efficient than rewriting the same setup within each test method.
+
+    Additionally, the builder pattern allows for centralizing configurations at the test class level or
+    even within a global test configuration file, meaning a single change can affect all your tests.
+    It also ensures consistency across tests and reduces potential errors, as it eliminates inconsistencies
+    that could arise from setting up configurations separately in each test method.
+
+    In conclusion, the second approach is the preferred method for larger-scale projects
+    or situations where common configurations are required.
+ */
