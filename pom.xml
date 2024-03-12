@@ -47,7 +47,15 @@
             <version>3.25.3</version>
             <scope>test</scope>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.json/json -->
+        <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind
+            for pojo classes-serialization -added-->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.16.1</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.json/json
+            to write response from api in a readable format-->
         <dependency>
             <groupId>org.json</groupId>
             <artifactId>json</artifactId>
@@ -61,8 +69,5 @@
             <version>1.16.1</version>
         </dependency>
 
-
-
     </dependencies>
-
 </project>

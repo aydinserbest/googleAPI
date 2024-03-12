@@ -1,4 +1,4 @@
-package addPlace.beginning;
+package addPlaceAPI.beginning;
 
 import io.restassured.RestAssured;
 import io.restassured.path.json.JsonPath;
